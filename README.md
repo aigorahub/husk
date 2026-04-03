@@ -62,9 +62,11 @@ kappa = 1 + 2(tau^2_i + sigma^2_j)
 
 where D is the distance between consumer i and product j in d-dimensional latent space, tau^2 is per-consumer variance, and sigma^2 is per-product variance. This formula is the moment generating function of a noncentral chi-squared distribution evaluated at the appropriate point (Ennis & Johnson, 1993).
 
-The model builds on Coombs's (1964) ideal point theory, Thurstone's (1927) discriminal process, and Shepard's (1987) universal law of generalization. The degeneracy problem that limited earlier unfolding methods (Busing, Groenen, & Heiser, 2005) is addressed through L2 shrinkage on log-variance parameters.
+HUSK builds directly on Landscape Segmentation Analysis (Ennis, 1993), which solved the degeneracy problem that had made multidimensional unfolding impractical for applied work. LSA introduced three ideas that proved critical: sigmoid-bounded predictions, per-consumer biases, and multi-start optimization. These innovations made preference mapping viable for the food and consumer products industries, where LSA has been the standard tool for three decades (Ennis & Ennis, 2013).
 
-For comparison with Landscape Segmentation Analysis (Ennis, 1993), see the paper.
+HUSK takes the theoretical kernel that underlies LSA (Ennis & Johnson, 1993), derived from Coombs's (1964) ideal point theory, Thurstone's (1927) discriminal process, and Shepard's (1987) universal law of generalization, and adds three modern techniques: L2 shrinkage on log-variance parameters to prevent degeneracy, a dimensionality stability correction for 3D analyses, and adaptive response transforms that can approximate LSA's built-in bias structure when the data calls for it.
+
+The relationship between HUSK and LSA is one of generalization. LSA's structural commitments (sigmoid bounding, built-in biases) are well-chosen defaults validated by decades of applied success. HUSK makes those commitments configurable, confirming their effectiveness while extending the model to conditions where different choices prove optimal. For details, see: Ennis, J. M., & Ennis, D. M. (2026). HUSK: An open-source model for hedonic unfolding with shrinkage kernel. *Journal of Mathematical Psychology* (in preparation).
 
 ## Citation
 
