@@ -79,15 +79,23 @@ For comparison with Landscape Segmentation Analysis (Ennis, 1993), see the paper
 
 ## References
 
+Andrich, D. (1988). The application of an unfolding model of the PIRT type to the measurement of attitude. *Applied Psychological Measurement*, 12(1), 33-51.
+
 Bechtel, G. G. (1968). Folded and unfolded scaling from preferential paired comparisons. *Journal of Mathematical Psychology*, 5(2), 333-357.
 
 Brockhoff, P. B., & Skovgaard, I. M. (1994). Modelling individual differences between assessors in sensory evaluations. *Food Quality and Preference*, 5(3), 215-224.
 
 Busing, F. M. T. A., Groenen, P. J., & Heiser, W. J. (2005). Avoiding degeneracy in multidimensional unfolding by penalizing on the coefficient of variation. *Psychometrika*, 70(1), 71-98.
 
+Busing, F. M. T. A., Heiser, W. J., & Cleaver, G. (2010). Restricted unfolding: Preference analysis with optimal transformations of preferences and attributes. *Food Quality and Preference*, 21(1), 82-92.
+
 Coombs, C. H. (1964). *A Theory of Data*. Wiley.
 
+De Soete, G., Carroll, J. D., & DeSarbo, W. S. (1986). The wandering ideal point model: A probabilistic multidimensional unfolding model for paired comparisons data. *Journal of Mathematical Psychology*, 30(1), 28-41.
+
 DeSarbo, W. S., & Rao, V. R. (1984). GENFOLD2: A set of models and algorithms for the general unfolding analysis of preference/dominance data. *Journal of Classification*, 1(1), 147-186.
+
+DeSarbo, W. S., Green, P. E., & Carroll, J. D. (1986). An alternating least-squares procedure for estimating missing preference data in product-concept testing. *Decision Sciences*, 17(2), 163-185.
 
 Engelhard, G. (2023). Functional approaches for modeling unfolding data. *Educational and Psychological Measurement*, 83(6), 1139-1159.
 
@@ -111,11 +119,23 @@ Koren, Y., Bell, R., & Volinsky, C. (2009). Matrix factorization techniques for 
 
 Luo, G. (2001). A class of probabilistic unfolding models for polytomous responses. *Journal of Mathematical Psychology*, 45(2), 224-248.
 
+France, S. L., Vaghefi, M. S., & Batchelder, W. H. (2018). FlexCCT: A methodological framework and software for ratings analysis and wisdom of the crowd applications. *IEEE Transactions on Systems, Man, and Cybernetics: Systems*, 48(12), 2321-2335.
+
+Gower, J. C., & Dijksterhuis, G. B. (2004). *Procrustes Problems*. Oxford University Press.
+
 MacKay, D. B. (2001). Probabilistic unfolding models for sensory data. *Food Quality and Preference*, 12(5-7), 427-436.
+
+MacKay, D. B., & Zinnes, J. L. (1995). Probabilistic multidimensional unfolding: An anisotropic model for preference ratio judgments. *Journal of Mathematical Psychology*, 39(1), 99-111.
+
+Meullenet, J. F., Xiong, R., & Findlay, C. J. (2008). *Multivariate and Probabilistic Analyses of Sensory Science Problems*. Wiley-Blackwell.
 
 Park, J., DeSarbo, W. S., & Liechty, J. (2008). A hierarchical Bayesian multidimensional scaling methodology for accommodating both structural and preference heterogeneity. *Psychometrika*, 73, 451-472.
 
 Park, J., DeSarbo, W. S., & Rajagopal, P. (2012). A new heterogeneous multidimensional unfolding procedure. *Psychometrika*, 77(2), 263-287.
+
+Roberts, J. S., Donoghue, J. R., & Laughlin, J. E. (2000). A general item response theory model for unfolding unidimensional polytomous responses. *Applied Psychological Measurement*, 24(1), 3-32.
+
+Rasmussen, C. E., & Williams, C. K. I. (2006). *Gaussian Processes for Machine Learning*. MIT Press.
 
 Roberts, J. S., Donoghue, J. R., & Laughlin, J. E. (2000). A general item response theory model for unfolding unidimensional polytomous responses. *Applied Psychological Measurement*, 24(1), 3-32.
 
