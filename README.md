@@ -49,7 +49,7 @@ print(f"Held-out correlation: {result['out_corr_mean']:.4f}")
 
 ## Autoresearch Results
 
-The `results/` directory contains the full corpus of 2,237 cross-validated experiments described in the paper. See `results/results_v2.tsv` (33-column structured TSV).
+The `results/` directory contains 1,790 cross-validated experiments reproducible with `fit_husk` (BFGS and Adam optimizers with none, per_consumer_bias, and per_consumer_affine transforms). The paper describes a broader evaluation of 2,237 experiments that also includes LSA (Ennis) and other optimizers for comparison. See `results/results_v2.tsv` (33-column structured TSV).
 
 ## Theoretical Background
 

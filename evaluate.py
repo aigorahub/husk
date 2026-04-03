@@ -277,9 +277,9 @@ def get_dataset(name: str, dgp: str = 'probabilistic', seed: int = 42) -> np.nda
 # ============================================================================
 
 HYPERPARAMETER_SPACE = {
-    # Model choice
-    'optimizer': ['bfgs', 'adam', 'gauss_newton', 'newton', 'ennis'],
-    'response_transform': ['none', 'affine', 'logistic', 'per_consumer_bias', 'per_consumer_affine'],
+    # Model choice (HUSK supports bfgs and adam only; newton/gauss_newton/ennis are in lsa.py)
+    'optimizer': ['bfgs', 'adam'],
+    'response_transform': ['none', 'per_consumer_bias', 'per_consumer_affine'],
 
     # Shared hyperparameters
     'n_dims': [2, 3],
