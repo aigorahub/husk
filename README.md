@@ -66,7 +66,7 @@ HUSK builds directly on Landscape Segmentation Analysis (Ennis, 1993), which sol
 
 HUSK takes the theoretical kernel that underlies LSA (Ennis & Johnson, 1993), derived from Coombs's (1964) ideal point theory, Thurstone's (1927) discriminal process, and Shepard's (1987) universal law of generalization, and adds three modern techniques: L2 shrinkage on log-variance parameters to prevent degeneracy, a dimensionality stability correction for 3D analyses, and adaptive response transforms that can approximate LSA's built-in bias structure when the data calls for it.
 
-The relationship between HUSK and LSA is one of generalization. LSA's structural commitments (sigmoid bounding, built-in biases) are well-chosen defaults validated by decades of applied success. HUSK makes those commitments configurable, confirming their effectiveness while extending the model to conditions where different choices prove optimal. For details, see: Ennis, J. M., & Ennis, D. M. (2026). HUSK: An open-source model for hedonic unfolding with shrinkage kernel. *Journal of Mathematical Psychology* (in preparation).
+The relationship between HUSK and LSA is one of generalization. LSA's structural commitments (sigmoid bounding, built-in biases) are well-chosen defaults validated by decades of applied success. HUSK makes those commitments configurable, confirming their effectiveness while extending the model to conditions where different choices prove optimal. For details, see Ennis and Ennis (in preparation), "HUSK: An open-source model for hedonic unfolding with shrinkage kernel."
 
 ## Citation
 
