@@ -1,8 +1,9 @@
 """
-prepare.py — FIXED. Do not modify.
+evaluate.py — Cross-validation harness and data generation for HUSK.
 
-Data generation, cross-validation splits, and evaluation metrics
-for the LSA autoresearch experiment loop.
+Provides dataset generation from both probabilistic and Ennis
+data-generating processes, k-fold cross-validation at the rating
+level, and structured result formatting.
 """
 
 import sys
@@ -11,9 +12,8 @@ import time
 import numpy as np
 from typing import Dict, Any, Tuple, Optional, List
 
-# Add parent dir to path so we can import lsa.py
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from lsa import fit_lsa_api
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from husk import fit_husk
 
 
 # ============================================================================
@@ -125,10 +125,10 @@ def evaluate_fold(
     if np.any(train_mask.sum(axis=1) < 3) or np.any(train_mask.sum(axis=0) < 3):
         return {'skip': True, 'reason': 'sparse fold'}
 
-    # Fit — pass ALL hyperparameters through to fit_lsa_api
+    # Fit via HUSK
     start = time.time()
     try:
-        result = fit_lsa_api(
+        result = fit_husk(
             ratings=train,
             n_dims=n_dims,
             sigma_sq=sigma_sq,
@@ -139,11 +139,7 @@ def evaluate_fold(
             learning_rate=learning_rate,
             n_outer_iter=n_outer_iter,
             bfgs_maxiter=bfgs_maxiter,
-            gn_max_feval=gn_max_feval,
-            newton_maxiter=newton_maxiter,
-            use_prefit=use_prefit,
             shrinkage=shrinkage,
-            tau_lr_multiplier=tau_lr_multiplier,
         )
     except Exception as e:
         return {'skip': True, 'reason': str(e)[:100]}

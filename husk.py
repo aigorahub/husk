@@ -31,9 +31,9 @@ def fit_husk(
     shrinkage: float = 0.005,
     learning_rate: float = 0.06,
     seed: int = 42,
-    num_runs: int = 1,
     n_outer_iter: Optional[int] = None,
     bfgs_maxiter: Optional[int] = None,
+    **kwargs,
 ) -> Dict[str, Any]:
     """
     Fit the HUSK model to a hedonic ratings matrix.
@@ -58,8 +58,6 @@ def fit_husk(
         Adam learning rate. Ignored for BFGS. Default 0.06.
     seed : int
         Random seed for reproducibility.
-    num_runs : int
-        Multi-start runs (best of N). Default 1 for BFGS.
     n_outer_iter : int, optional
         Adam iterations. None = auto (60 for 2D, 80 for 3D).
     bfgs_maxiter : int, optional
@@ -86,6 +84,10 @@ def fit_husk(
 
     if n_obs < 10:
         raise ValueError(f"Too few observed ratings ({n_obs}). Need at least 10.")
+    if I < 3:
+        raise ValueError(f"Too few consumers ({I}). Need at least 3.")
+    if J < 3:
+        raise ValueError(f"Too few products ({J}). Need at least 3.")
 
     # Initialize parameters
     consumer_pos = rng.normal(0, 0.5, (I, n_dims))
@@ -123,11 +125,19 @@ def fit_husk(
         return mse + shrink_tau + shrink_sig
 
     if optimizer == 'bfgs':
+        # L-BFGS-B computes gradients via its own finite differences internally.
+        # For production use with large datasets, provide analytic gradients via jac=.
         x0 = _pack(consumer_pos, product_pos, log_tau_sq, log_sigma_sq)
         maxiter = bfgs_maxiter or 100
-        result = minimize(_loss, x0, method='L-BFGS-B', options={'maxiter': maxiter})
-        cp, pp, lt, ls = _unpack(result.x)
+        opt_result = minimize(_loss, x0, method='L-BFGS-B', options={'maxiter': maxiter})
+        if not opt_result.success and opt_result.status not in (1,):  # status 1 = max iter reached
+            import warnings
+            warnings.warn(f"BFGS did not converge: {opt_result.message}")
+        cp, pp, lt, ls = _unpack(opt_result.x)
     elif optimizer == 'adam':
+        # This reference implementation uses numerical gradients for clarity.
+        # The production implementation in LSA Studio uses analytic gradients
+        # for 10-50x speedup. See the paper for the gradient derivation.
         iters = n_outer_iter or (60 if n_dims == 2 else 80)
         x = _pack(consumer_pos, product_pos, log_tau_sq, log_sigma_sq)
         m = np.zeros_like(x)
