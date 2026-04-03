@@ -1,6 +1,6 @@
 # HUSK: Hedonic Unfolding with Shrinkage Kernel
 
-Open-source implementation of the HUSK framework for probabilistic unfolding of hedonic data.
+Open-source implementation of the HUSK framework for probabilistic unfolding of hedonic data (liking, purchase intent, acceptability).
 
 HUSK applies the Ennis-Johnson (1993) Thurstone-Shepard kernel with three innovations:
 - **L2 shrinkage** on log-variance parameters to prevent degeneracy
@@ -49,8 +49,22 @@ print(f"Held-out correlation: {result['out_corr_mean']:.4f}")
 
 ## Autoresearch Results
 
-The `results/` directory contains the full corpus of 2,237 cross-validated experiments
-described in the paper. See `results/results_v2.tsv` (33-column structured TSV).
+The `results/` directory contains the full corpus of 2,237 cross-validated experiments described in the paper. See `results/results_v2.tsv` (33-column structured TSV).
+
+## Theoretical Background
+
+The HUSK kernel is the expected value of Shepard's (1987) generalization gradient under Thurstonian noise:
+
+```
+E[L_ij] = kappa^(-d/2) * exp(-D^2_ij / kappa)
+kappa = 1 + 2(tau^2_i + sigma^2_j)
+```
+
+where D is the distance between consumer i and product j in d-dimensional latent space, tau^2 is per-consumer variance, and sigma^2 is per-product variance. This formula is the moment generating function of a noncentral chi-squared distribution evaluated at the appropriate point (Ennis & Johnson, 1993).
+
+The model builds on Coombs's (1964) ideal point theory, Thurstone's (1927) discriminal process, and Shepard's (1987) universal law of generalization. The degeneracy problem that limited earlier unfolding methods (Busing, Groenen, & Heiser, 2005) is addressed through L2 shrinkage on log-variance parameters.
+
+For comparison with Landscape Segmentation Analysis (Ennis, 1993), see the paper.
 
 ## Citation
 
@@ -65,8 +79,53 @@ described in the paper. See `results/results_v2.tsv` (33-column structured TSV).
 
 ## References
 
-- Ennis, D. M., & Johnson, N. L. (1993). Thurstone-Shepard similarity models as special cases of moment generating functions. *Journal of Mathematical Psychology*, 37(1), 104-110.
-- Karpathy, A. (2026). autoresearch. GitHub. https://github.com/karpathy/autoresearch
+Bechtel, G. G. (1968). Folded and unfolded scaling from preferential paired comparisons. *Journal of Mathematical Psychology*, 5(2), 333-357.
+
+Brockhoff, P. B., & Skovgaard, I. M. (1994). Modelling individual differences between assessors in sensory evaluations. *Food Quality and Preference*, 5(3), 215-224.
+
+Busing, F. M. T. A., Groenen, P. J., & Heiser, W. J. (2005). Avoiding degeneracy in multidimensional unfolding by penalizing on the coefficient of variation. *Psychometrika*, 70(1), 71-98.
+
+Coombs, C. H. (1964). *A Theory of Data*. Wiley.
+
+DeSarbo, W. S., & Rao, V. R. (1984). GENFOLD2: A set of models and algorithms for the general unfolding analysis of preference/dominance data. *Journal of Classification*, 1(1), 147-186.
+
+Engelhard, G. (2023). Functional approaches for modeling unfolding data. *Educational and Psychological Measurement*, 83(6), 1139-1159.
+
+Ennis, D. M. (1993). The mapping of sensory and liking data. *Food Quality and Preference*, 4(3), 149-159.
+
+Ennis, D. M., & Ennis, J. M. (2013). Mapping hedonic data: A process perspective. *Journal of Sensory Studies*, 28(5), 324-334.
+
+Ennis, D. M., & Johnson, N. L. (1993). Thurstone-Shepard similarity models as special cases of moment generating functions. *Journal of Mathematical Psychology*, 37(1), 104-110.
+
+Ennis, D. M., & Johnson, N. L. (1994). A general model for preferential and triadic choice in terms of central F distribution functions. *Psychometrika*, 59, 91-96.
+
+Ennis, D. M., & Mullen, K. (1986). A multivariate model for discrimination methods. *Journal of Mathematical Psychology*, 30, 206-219.
+
+Ennis, D. M., Palen, J. J., & Mullen, K. (1988). A multidimensional stochastic theory of similarity. *Journal of Mathematical Psychology*, 32, 449-465.
+
+Karpathy, A. (2026). autoresearch [Computer software]. GitHub. https://github.com/karpathy/autoresearch
+
+Kingma, D. P., & Ba, J. (2015). Adam: A method for stochastic optimization. *Proceedings of the 3rd International Conference on Learning Representations (ICLR)*.
+
+Koren, Y., Bell, R., & Volinsky, C. (2009). Matrix factorization techniques for recommender systems. *Computer*, 42(8), 30-37.
+
+Luo, G. (2001). A class of probabilistic unfolding models for polytomous responses. *Journal of Mathematical Psychology*, 45(2), 224-248.
+
+MacKay, D. B. (2001). Probabilistic unfolding models for sensory data. *Food Quality and Preference*, 12(5-7), 427-436.
+
+Park, J., DeSarbo, W. S., & Liechty, J. (2008). A hierarchical Bayesian multidimensional scaling methodology for accommodating both structural and preference heterogeneity. *Psychometrika*, 73, 451-472.
+
+Park, J., DeSarbo, W. S., & Rajagopal, P. (2012). A new heterogeneous multidimensional unfolding procedure. *Psychometrika*, 77(2), 263-287.
+
+Roberts, J. S., Donoghue, J. R., & Laughlin, J. E. (2000). A general item response theory model for unfolding unidimensional polytomous responses. *Applied Psychological Measurement*, 24(1), 3-32.
+
+Shepard, R. N. (1987). Toward a universal law of generalization for psychological science. *Science*, 237(4820), 1317-1323.
+
+Thurstone, L. L. (1927). A law of comparative judgment. *Psychological Review*, 34(4), 273-286.
+
+Wold, S. (1978). Cross-validatory estimation of the number of components in factor and principal components models. *Technometrics*, 20(4), 397-405.
+
+Zinnes, J. L., & MacKay, D. B. (1983). Probabilistic multidimensional scaling: Complete and incomplete data. *Psychometrika*, 48(1), 27-48.
 
 ## License
 
