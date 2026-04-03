@@ -72,9 +72,9 @@ The relationship between HUSK and LSA is one of generalization. LSA's structural
 
 ```bibtex
 @article{ennis2026husk,
-  title={HUSK: Hedonic Unfolding with Shrinkage Kernel},
+  title={HUSK: An Open-Source Model for Hedonic Unfolding with Shrinkage Kernel},
   author={Ennis, John M. and Ennis, Daniel M.},
-  journal={Journal of Mathematical Psychology},
+  note={In preparation},
   year={2026}
 }
 ```
