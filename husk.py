@@ -11,6 +11,10 @@ Uses the Ennis-Johnson (1993) Thurstone-Shepard kernel:
 
 with L2 shrinkage on log-variance parameters and adaptive response transforms.
 
+This is the reference implementation. The production backend (LSA Studio)
+uses analytic gradients for 10-50x faster fitting but computes the same
+kernel and shrinkage.
+
 Reference:
     Ennis, D. M., & Johnson, N. L. (1993). Thurstone-Shepard similarity
     models as special cases of moment generating functions. Journal of
