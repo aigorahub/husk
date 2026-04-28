@@ -42,7 +42,7 @@ def fit_husk(
     # HUSK is single-start. The harness may pass num_runs (or other
     # legacy/sweep parameters) via kwargs; warn rather than silently
     # ignore so callers know the option has no effect.
-    if kwargs.get('num_runs', 1) and kwargs.get('num_runs', 1) > 1:
+    if kwargs.get('num_runs', 1) > 1:
         import warnings
         warnings.warn(
             "fit_husk is single-start; num_runs > 1 is ignored. "
