@@ -39,6 +39,16 @@ def fit_husk(
     bfgs_maxiter: Optional[int] = None,
     **kwargs,
 ) -> Dict[str, Any]:
+    # HUSK is single-start. The harness may pass num_runs (or other
+    # legacy/sweep parameters) via kwargs; warn rather than silently
+    # ignore so callers know the option has no effect.
+    if kwargs.get('num_runs', 1) and kwargs.get('num_runs', 1) > 1:
+        import warnings
+        warnings.warn(
+            "fit_husk is single-start; num_runs > 1 is ignored. "
+            "Use lsa.fit_lsa_ennis for multi-start optimization.",
+            stacklevel=2,
+        )
     """
     Fit the HUSK model to a hedonic ratings matrix.
 

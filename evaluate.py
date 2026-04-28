@@ -128,6 +128,9 @@ def evaluate_fold(
     # Fit via HUSK
     start = time.time()
     try:
+        # HUSK is single-start; num_runs is tracked in the autoresearch
+        # results corpus for sweep-grid bookkeeping but not passed here
+        # because fit_husk does not implement multi-start.
         result = fit_husk(
             ratings=train,
             n_dims=n_dims,
@@ -135,7 +138,6 @@ def evaluate_fold(
             optimizer=optimizer,
             response_transform=response_transform,
             seed=seed,
-            num_runs=num_runs,
             learning_rate=learning_rate,
             n_outer_iter=n_outer_iter,
             bfgs_maxiter=bfgs_maxiter,
